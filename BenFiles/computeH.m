@@ -1,5 +1,5 @@
 % Benjamin Shih
-% Section 4.1: Sensitivity to Normalization
+% Section 4.1: Implementation of non-normalized planar homography in 2D.
 
 function [ H2to1 ] = computeH( p1, p2)
 % p1 and p2 are 2xN matrices of corresponding (x,y)' coordinates between

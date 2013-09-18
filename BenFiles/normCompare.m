@@ -7,7 +7,8 @@ close all
 clear all
 
 p = 100 * [-2 -1 0 1 2; 10 2 1 2 10];
-ptest = 100 * [0; 3];
+ptest = 100 * [0; 3; 1];
+    
 
 pSize = size(p);
 
@@ -16,6 +17,8 @@ mu = 0;
 sigma = 1;
 
 numTrials = 1000;
+noNormed = zeros(3, numTrials);
+normed = zeros(3, numTrials);
 
 for i=1:numTrials
     % Introduce Gaussian noise to the data.
@@ -27,12 +30,25 @@ for i=1:numTrials
     H = computeH(p, p_corrupt);
     Hnorm = computeH_norm(p, p_corrupt);
     
-    % Apply the homographies to the test point and pad the vector with a 1.
-    ptest = [ptest; 1];
     
+    noNormed(:,i) = H*ptest;
+    %noNormed(:,i) = noNormed(:,i)./noNormed(3,i); % normalize
+    normed(:,i) = Hnorm*ptest;
+    %normed(:,i) = normed(:,i)./normed(3,i); % normalize
+
     
 end
 
+%% Plot Results
+% Plot the resulting point sets in a single plot in order to compare the
+% normalized and un-normalized results. 
 
+noNormed = normBS(noNormed);
+normed = normBS(normed);
+
+figure;
+hold on;
+plot(noNormed(1,1:end), noNormed(2,1:end), 'rx');
+plot(normed(1,1:end), normed(2,1:end), 'bo');
 
 toc
