@@ -34,4 +34,4 @@ function [ H2to1 ] = computeH( p1, p2)
 end
 
 % It's okay that the resulting H2to1 matrix is scaled because a homography
-% is only determined up to scale.
+% is only determined up to scale. 
