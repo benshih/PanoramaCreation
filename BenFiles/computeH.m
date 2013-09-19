@@ -5,10 +5,7 @@ function [ H2to1 ] = computeH( p1, p2)
 % p1 and p2 are 2xN matrices of corresponding (x,y)' coordinates between
 % two images
 
-    % pad p1 and p2 with 1s for scale factor
     N = length(p1);
-    p1 = [p1; ones(1, N)];
-    p2 = [p2; ones(1, N)];
     
     A = zeros(2*N, 9);
     zerot = [0 0 0];

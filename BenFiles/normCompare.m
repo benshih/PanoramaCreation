@@ -6,7 +6,7 @@ tic
 close all
 clear all
 
-p = 100 * [-2 -1 0 1 2; 10 2 1 2 10];
+p = 100 * [-2 -1 0 1 2; 10 2 1 2 10; 1 1 1 1 1];
 ptest = 100 * [0; 3; 1];
     
 
@@ -28,12 +28,12 @@ for i=1:numTrials
     % Generate the homographies between the original and corrupted data.
     % The homographies produce 3x3 transformation matrices. 
     H = computeH(p, p_corrupt);
-    Hnorm = computeH_norm(p, p_corrupt);
+    [sim, Hnorm] = computeH_norm(p, p_corrupt);
     
     
     noNormed(:,i) = H*ptest;
     %noNormed(:,i) = noNormed(:,i)./noNormed(3,i); % normalize
-    normed(:,i) = Hnorm*ptest;
+    normed(:,i) = inv(sim)*Hnorm*ptest;
     %normed(:,i) = normed(:,i)./normed(3,i); % normalize
 
     
@@ -43,8 +43,8 @@ end
 % Plot the resulting point sets in a single plot in order to compare the
 % normalized and un-normalized results. 
 
-noNormed = normBS(noNormed);
-normed = normBS(normed);
+% noNormed = normBS(noNormed);
+% normed = normBS(normed);
 
 figure;
 hold on;
