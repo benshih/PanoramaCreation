@@ -21,8 +21,8 @@ function [H2to1norm] = computeH_norm(p1, p2)
     yvec1 = p1trans(2,:);
     avgDist1 = mean(sqrt(xvec1.^2 + yvec1.^2));
     scale1 = sqrt(2)/avgDist1;
-    sim1 = [scale1  0       scale*mu1x;
-            0       scale1  scale*mu1y;
+    sim1 = [scale1  0       -scale1*mu1x;
+            0       scale1  -scale1*mu1y;
             0       0       1];
     p1norm = sim1*p1;
     %p2
@@ -30,8 +30,8 @@ function [H2to1norm] = computeH_norm(p1, p2)
     yvec2 = p2trans(2,:);
     avgDist2 = mean(sqrt(xvec2.^2 + yvec2.^2));
     scale2 = sqrt(2)/avgDist2;
-    sim2 = [scale2  0       scale*mu2x;
-            0       scale2  scale*mu2y;
+    sim2 = [scale2  0       -scale2*mu2x;
+            0       scale2  -scale2*mu2y;
             0       0       1];
     p2norm = sim2*p2;
 
