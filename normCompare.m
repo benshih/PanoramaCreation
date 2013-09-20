@@ -28,18 +28,25 @@ for i=1:numTrials
 
     % Generate the homographies between the original and corrupted data.
     % The homographies produce 3x3 transformation matrices. 
-    H = computeH(p, p_corrupt);
-    [sim, Hnorm] = computeH_norm(p, p_corrupt);
+    H2to1 = computeH(p, p_corrupt);
+    H2to1norm = computeH_norm(p, p_corrupt);
     
     
-    noNormed(:,i) = H*ptest;
+    noNormed(:,i) = H2to1*ptest;
     %noNormed(:,i) = noNormed(:,i)./noNormed(3,i); % normalize
     %normed(:,i) = inv(sim)*Hnorm*ptest;
-    normed(:,i) = Hnorm*ptest;
+    normed(:,i) = H2to1norm*ptest;
     %normed(:,i) = normed(:,i)./normed(3,i); % normalize
 
     
 end
+
+% noNormed(1,1:end) = noNormed(1,1:end)./noNormed(3,1:end);
+% noNormed(2,1:end) = noNormed(2,1:end)./noNormed(3,1:end);
+% normed(1,1:end) = normed(1,1:end)./normed(3,1:end);
+% normed(2,1:end) = normed(2,1:end)./normed(3,1:end);
+
+
 
 %% Plot Results
 % Plot the resulting point sets in a single plot in order to compare the
