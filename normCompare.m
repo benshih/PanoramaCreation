@@ -41,10 +41,48 @@ for i=1:numTrials
     
 end
 
-% noNormed(1,1:end) = noNormed(1,1:end)./noNormed(3,1:end);
-% noNormed(2,1:end) = noNormed(2,1:end)./noNormed(3,1:end);
-% normed(1,1:end) = normed(1,1:end)./normed(3,1:end);
-% normed(2,1:end) = normed(2,1:end)./normed(3,1:end);
+
+
+
+noNormed(1,1:end) = noNormed(1,1:end)./noNormed(3,1:end);
+noNormed(2,1:end) = noNormed(2,1:end)./noNormed(3,1:end);
+noNormed(3,1:end) = noNormed(3,1:end)./noNormed(3,1:end);
+
+normed(1,1:end) = normed(1,1:end)./normed(3,1:end);
+normed(2,1:end) = normed(2,1:end)./normed(3,1:end);
+normed(3,1:end) = normed(3,1:end)./normed(3,1:end);
+
+% % % Translate the centroid of the points to the origin.
+% % % p1
+% % mu1x = mean(noNormed(1,:));
+% % mu1y = mean(noNormed(2,:));
+% % p1trans(1,:) = noNormed(1,:) - mu1x;
+% % p1trans(2,:) = noNormed(2,:) - mu1y;
+% % % p2
+% % mu2x = mean(normed(1,:));
+% % mu2y = mean(normed(2,:));
+% % p2trans(1,:) = normed(1,:) - mu2x;
+% % p2trans(2,:) = normed(2,:) - mu2y;
+% % 
+% % % Scale the points so that the average distance from the origin is sqrt(2).
+% % % p1
+% % xvec1 = p1trans(1,:);
+% % yvec1 = p1trans(2,:);
+% % avgDist1 = mean(sqrt(xvec1.^2 + yvec1.^2));
+% % scale1 = sqrt(2)/avgDist1;
+% % sim1 = [scale1  0       -scale1*mu1x;
+% %         0       scale1  -scale1*mu1y;
+% %         0       0       1];
+% % p1norm = sim1*noNormed;
+% % %p2
+% % xvec2 = p2trans(1,:);
+% % yvec2 = p2trans(2,:);
+% % avgDist2 = mean(sqrt(xvec2.^2 + yvec2.^2));
+% % scale2 = sqrt(2)/avgDist2;
+% % sim2 = [scale2  0       -scale2*mu2x;
+% %         0       scale2  -scale2*mu2y;
+% %         0       0       1];
+% % p2norm = sim2*normed;
 
 
 
