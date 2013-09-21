@@ -1,6 +1,47 @@
 
+img1 = imread('ec1.jpg');
+img2 = imread('ec2.jpg');
 
+img1 = imresize(img1, [1068 1608]);
+img2 = imresize(img2, [1068 1608]);
 
-% Generate the matching feature points. 
-cpselect
+% Generate the matching feature points via cpselect tool in MATLAB.
+% Resulting points are below.
 
+% ec1.jpg
+img1pts =  1000*[
+
+    0.6492    0.5757;
+    0.5142    0.5307;
+    0.6883    0.5457;
+    1.0903    1.0168;
+    0.9883    0.9208;
+    1.1098    0.9448;
+    1.0633    0.8503;
+    0.1483    0.2622;
+    0.0973    0.5007;
+    0.0268    0.3447;
+    1.3648    0.9103;
+    1.2087    0.4399;
+    0.4408    0.3102];
+
+% ec2.jpg
+img2pts = 1000 * [  
+    0.8668    0.5968;
+    0.7363    0.5517;
+    0.9133    0.5682;
+    1.3138    1.0362;
+    1.2073    0.9358;
+    1.3273    0.9628;
+    1.2868    0.8652;
+    0.3703    0.2847;
+    0.3118    0.5097;
+    0.2503    0.3657;
+    1.5838    0.9417;
+    1.4498    0.5104;
+    0.6777    0.3252];
+
+pts = [img1pts'; img2pts'];
+  
+  
+q7(img1, img2, pts);

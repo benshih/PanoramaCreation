@@ -43,17 +43,17 @@ function [ H2to1 ] = q6_2( img1, img2, pts)
     % side than the left. Fixing this requires some conditionals to find
     % maximum values, rather than assuming the right side will be larger
     % (which is what I did in this case). 
-    scx = xLimit/warpBR(1);
+    scx = 1;
     scy = 1; 
-    mux = 0;
-    muy = abs(warpTR(2));
+    mux = abs(warpTL(1))+220;
+    muy = abs(warpTR(2))/2+20;
     M = [scx 0 mux ; 0 scy muy; 0 0 1];
 
     % Compute the output boundary that will snuggly fit the full panoramam.
-    out_size = [ceil(abs(warpTR(2) - warpBR(2))), xLimit];
+    out_size = [ceil(abs(warpTR(2) - warpBL(2))), 1900];
 
     % Compute the warped version of both images.
-    warp_im1 = warpH(img1, M, out_size);
+    warp_im1 = warpH(img1, eye(3), out_size);
     warp_im2 = warpH(img2, M*H2to1norm, out_size);
     
     % Index into matrix images using 'logical' data type to skip for loop
@@ -63,9 +63,10 @@ function [ H2to1 ] = q6_2( img1, img2, pts)
     finalImg(overlap) = warp_im1(overlap);
 
     close all
-    figure; imshow(warp_im1); title('warped image 1');
-    figure; imshow(warp_im2); title('warped image 2');
-    figure; imshow(finalImg); title('panorama image');
+    figure; 
+    subplot(1,3,1); imshow(warp_im1); title('warped image 1');
+    subplot(1,3,2); imshow(warp_im2); title('warped image 2');
+    subplot(1,3,3); imshow(finalImg); title('panorama image');
 
     
 
