@@ -29,8 +29,8 @@ function [ H2to1 ] = q6_1( img1, img2, pts)
     % Display and label the images. 
     close all
     figure;
-    subplot(1,3,1); imshow(warp2); title('warped image');
-    subplot(1,3,2); imshow(img1); title('original img');
+    subplot(1,3,1); imshow(img1); title('original img');
+    subplot(1,3,2); imshow(warp2); title('warped image');
     subplot(1,3,3); imshow(finalImg); title('panorama image');
 
 end
