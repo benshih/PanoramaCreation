@@ -7,4 +7,8 @@ img2 = imread('taj2r.jpg');
 pts = load('tajPts.mat');
 pts = pts.tajPts;
 
+%% 6.1
 q6_1(img1, img2, pts);
+
+%% 6.2
+q6_2(img1, img2, pts);
